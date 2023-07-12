@@ -28,6 +28,35 @@ const displayTodo = () => {
         list.classList.add('list-group-item', 'mb-3', 'd-flex', 'justify-content-between');
         //list.innerText = todo.name;
       
+
+
+        const leftDiv = document.createElement('div');
+
+        //to create checkbox
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.checked = todo.isCompleted;
+        checkbox.classList.add('form-check-input', 'ms-2');
+
+
+        checkbox.addEventListener('change', (event) => {
+            event.preventDefault();
+            todo.isCompleted = event.target.checked;
+            displayTodo();
+
+        });
+
+        //to add to do list names
+        const span = document.createElement('span');
+        span.innerText = todo.name;
+        span.classList.add('ms-2',`${todo.isCompleted ? 'text-decoration-line-through': 'none'}`);
+
+
+       
+
+        leftDiv.appendChild(checkbox);
+        leftDiv.appendChild(span);
+        list.appendChild(leftDiv);
         todoList.append(list);
      
     });

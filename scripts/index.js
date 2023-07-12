@@ -52,11 +52,40 @@ const displayTodo = () => {
         span.classList.add('ms-2',`${todo.isCompleted ? 'text-decoration-line-through': 'none'}`);
 
 
+        const rightDiv = document.createElement('div');
+        
+        const editBtn = document.createElement('button');
+        editBtn.classList.add('btn', 'btn-primary', 'btn-sm');
+        editBtn.innerText = 'Edit';
+
        
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.classList.add('btn', 'btn-danger','btn-sm', 'ms-2');
+        deleteBtn.innerText = 'Delete';
+
+
+        deleteBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+
+           //console.log(todos);
+           //console.log(todo.id);
+
+           todos = todos.filter((t) => {
+                return t.id !== todo.id;
+           });
+
+           
+           displayTodo();
+        });
+
 
         leftDiv.appendChild(checkbox);
         leftDiv.appendChild(span);
         list.appendChild(leftDiv);
+        rightDiv.appendChild(editBtn);
+        rightDiv.appendChild(deleteBtn);
+        list.appendChild(rightDiv);
         todoList.append(list);
      
     });

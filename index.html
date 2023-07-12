@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- class="border border-danger" -->
+    <div id="container" >
+      <h1 class="text-center text-danger m-4">To Do List</h1>
+
+      <div class="row ">
+        <div class="col-md-6 mx-auto">
+          <form id="todo-form" action="">
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                id="todo-input"
+                class="form-control"
+                placeholder="Add To Do"
+              />
+              <label for="">Add To Do</label>
+            </div>
+
+            <button class="btn btn-primary text-white" type="submit">Add</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-md-6 mx-auto">
+            <ul class="list-group" id="todo-list"></ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="./scripts/index.js"></script>
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

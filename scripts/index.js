@@ -3,6 +3,7 @@ const todoInput = document.getElementById('todo-input');
 const todoList = document.getElementById('todo-list');
 
 let todos = [];
+let todoId;
 
 
 todoForm.addEventListener('submit', (event) => {
@@ -58,7 +59,23 @@ const displayTodo = () => {
         editBtn.classList.add('btn', 'btn-primary', 'btn-sm');
         editBtn.innerText = 'Edit';
 
+
+        editBtn.setAttribute('data-bs-toggle', 'modal');
+        editBtn.setAttribute('data-bs-target', '#editModal');
        
+        
+
+        editBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+             document.getElementById('edit-todo').value = todo.name;
+             todoId = todo.id;
+            
+
+        
+
+          
+        });
+
 
         const deleteBtn = document.createElement('button');
         deleteBtn.classList.add('btn', 'btn-danger','btn-sm', 'ms-2');
@@ -88,6 +105,33 @@ const displayTodo = () => {
         list.appendChild(rightDiv);
         todoList.append(list);
      
+    });
+
+
+
+    const saveChange = document.getElementById('save-change');
+    saveChange.addEventListener('click', (event) => {
+        event.preventDefault();
+        //console.log('clicked');
+
+        const editTodo = document.getElementById('edit-todo').value;
+        //console.log(editTodo);
+
+        todos = todos.map((t) => {
+            return t.id === todoId ?{
+                id: t.id,
+                name: editTodo,
+                isCompleted: t.isCompleted
+            }: t
+        });
+
+        displayTodo();
+         document.getElementById('close-btn').click();
+       
+
+        
+
+
     });
 
 
